@@ -1,0 +1,26 @@
+{% load i18n %}
+{% load staticfiles %}
+
+<form metho="get">
+    <div class="grp-module">
+        <div class="grp-row">
+            <label>{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}</label>
+            {% trans "Start" %}:<input class="datepicker start" type="text" name="{{ spec.lookup_kwarg_since }}" size="10"/>
+            {% trans "End" %}: <input class="datepicker end" type="text" name="{{ spec.lookup_kwarg_until }}" size="10"/>
+        </div>
+        <div class="grp-row">
+            <input type="submit" value="{% trans 'filter' %}"/>
+        </div>
+    </div>
+
+
+</form>
+<script type="text/javascript">
+    django.jQuery('.datepicker').datepicker();
+    django.jQuery(".datepicker").datepicker("option", "dateFormat", 'yy-mm-dd');
+
+    django.jQuery(".datepicker.start").datepicker("setDate", "{{ spec.start }}");
+
+    django.jQuery(".datepicker.end").datepicker("setDate", "{{ spec.end }}");
+
+</script>
