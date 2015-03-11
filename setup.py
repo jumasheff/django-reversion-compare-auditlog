@@ -12,6 +12,4 @@ setup(
     long_description=open('README.md').read(),
     zip_safe=False,
     packages=find_packages(),
-    setup_requires=['django-reversion-compare'],
-    install_requires=['django-reversion-compare']
 )
